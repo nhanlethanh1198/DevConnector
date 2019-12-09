@@ -1,0 +1,4 @@
+{
+  "mongoURI_1": "mongodb+srv://admin123:admin123@devconnector-ry9wc.azure.mongodb.net/test?retryWrites=true&w=majority",
+  "mongoURI_2": "mongodb+srv://admin123:admin123@devconnector-pmrq9.mongodb.net/test?retryWrites=true&w=majority"
+}

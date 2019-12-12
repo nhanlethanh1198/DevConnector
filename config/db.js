@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const config = require("config");
 require("dotenv").config();
 
-const db = process.env.LOCAL_URI || config.get("mongoURI_2");
+const db = process.env.LOCAL_URI_DEV || config.get("mongoURI_2");
 
 const connectDB = async () => {
 	try {

@@ -1,5 +1,7 @@
 {
   "mongoURI_1": "mongodb+srv://admin123:admin123@devconnector-ry9wc.azure.mongodb.net/test?retryWrites=true&w=majority",
   "mongoURI_2": "mongodb+srv://admin123:admin123@devconnector-pmrq9.mongodb.net/DevConnector?retryWrites=true&w=majority",
-  "jwtSecret" : "mysecrettoken"
+  "jwtSecret" : "mysecrettoken",
+  "githubClientId": "619da31340dd33d35d96",
+  "githubSecret": "c7c5212a3e44d671ef41de582a2db4d3fb2bd2fa"
 }

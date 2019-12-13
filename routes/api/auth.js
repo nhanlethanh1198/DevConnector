@@ -23,6 +23,7 @@ router.get("/", auth, async (req, res) => {
 // @route 	POST api/auth
 // @desc 	  Authenticate user & get token
 // @access	Public
+
 router.post(
 	"/",
 	[
@@ -70,7 +71,6 @@ router.post(
 					return res.json({ token });
 				}
 			);
-			// res.send("User registered");
 		} catch (err) {
 			console.error(err.message);
 			res.status(500).send("Server error!");

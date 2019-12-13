@@ -11,6 +11,9 @@ import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
+import Dashboard from "./components/dashboard/Dashboard";
+import NotFound from "./components/layout/NotFound";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 // Check token
 if (localStorage.token) {
@@ -27,18 +30,25 @@ const App = () => {
 			<Router>
 				<Fragment>
 					<Navbar />
-					<Route exact path='/' component={Landing} />
-					<section className='container'>
-						<Alert />
-						<Switch>
+					<Switch>
+						<Route exact path='/' component={Landing} />
+						<section className='container'>
+							<Alert />
+
 							<Route
 								exact
 								path='/register'
 								component={Register}
 							/>
 							<Route exact path='/login' component={Login} />
-						</Switch>
-					</section>
+							<PrivateRoute
+								exact
+								path='/dashboard'
+								component={Dashboard}
+							/>
+							<Route path='' component={NotFound} />
+						</section>
+					</Switch>
 				</Fragment>
 			</Router>
 		</Provider>

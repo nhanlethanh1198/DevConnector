@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 // Redux
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -15,6 +15,9 @@ import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 import NotFound from "./components/layout/NotFound";
 import CreateProfile from "./components/profile-forms/CreateProfile";
+import EditProfile from "./components/profile-forms/EditProfile";
+import AddExperience from "./components/profile-forms/AddExperience";
+import AddEducation from "./components/profile-forms/AddEducation";
 
 // Check token
 if (localStorage.token) {
@@ -30,9 +33,9 @@ const App = () => {
 		<Provider store={store}>
 			<Router>
 				<Navbar />
-
 				<Route exact path='/' component={Landing} />
 				<Switch>
+				<Fragment>
 					<section className='container'>
 						<Alert />
 						<Route path='/register' component={Register} />
@@ -47,8 +50,24 @@ const App = () => {
 							path='/create-profile'
 							component={CreateProfile}
 						/>
+						<PrivateRoute
+							auth
+							path='/edit-profile'
+							component={EditProfile}
+						/>
+						<PrivateRoute
+							auth
+							path='/add-experience'
+							component={AddExperience}
+						/>
+						<PrivateRoute
+							auth
+							path='/add-education'
+							component={AddEducation}
+						/>
 						{/* <Route component={NotFound} /> */}
 					</section>
+					</Fragment>
 				</Switch>
 			</Router>
 		</Provider>

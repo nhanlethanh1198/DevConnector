@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 // Redux
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -6,14 +6,15 @@ import { loadUser } from "./actions/auth";
 import "./App.css";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import Dashboard from "./components/dashboard/Dashboard";
 import Alert from "./components/layout/Alert";
 import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
+import PrivateRoute from "./components/routing/PrivateRoute";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
-import Dashboard from "./components/dashboard/Dashboard";
 import NotFound from "./components/layout/NotFound";
-import PrivateRoute from "./components/routing/PrivateRoute";
+import CreateProfile from "./components/profile-forms/CreateProfile";
 
 // Check token
 if (localStorage.token) {
@@ -28,28 +29,27 @@ const App = () => {
 	return (
 		<Provider store={store}>
 			<Router>
-				<Fragment>
-					<Navbar />
-					<Switch>
-						<Route exact path='/' component={Landing} />
-						<section className='container'>
-							<Alert />
+				<Navbar />
 
-							<Route
-								exact
-								path='/register'
-								component={Register}
-							/>
-							<Route exact path='/login' component={Login} />
-							<PrivateRoute
-								exact
-								path='/dashboard'
-								component={Dashboard}
-							/>
-							<Route path='' component={NotFound} />
-						</section>
-					</Switch>
-				</Fragment>
+				<Route exact path='/' component={Landing} />
+				<Switch>
+					<section className='container'>
+						<Alert />
+						<Route path='/register' component={Register} />
+						<Route exact path='/login' component={Login} />
+						<PrivateRoute
+							auth
+							path='/dashboard'
+							component={Dashboard}
+						/>
+						<PrivateRoute
+							auth
+							path='/create-profile'
+							component={CreateProfile}
+						/>
+						{/* <Route component={NotFound} /> */}
+					</section>
+				</Switch>
 			</Router>
 		</Provider>
 	);

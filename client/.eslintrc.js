@@ -1,9 +1,7 @@
 module.exports = {
 	env: {
 		browser: true,
-		commonjs: true,
-		es6: true,
-		node: true
+		es6: true
 	},
 	extends: ["eslint:recommended", "plugin:react/recommended"],
 	globals: {
@@ -14,11 +12,11 @@ module.exports = {
 		ecmaFeatures: {
 			jsx: true
 		},
-		ecmaVersion: 2018
+		ecmaVersion: 2018,
+		sourceType: "module"
 	},
 	plugins: ["react", "react-hooks"],
 	rules: {
-		semi: ["warn", "always"],
 		"react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
 		"react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
 	}

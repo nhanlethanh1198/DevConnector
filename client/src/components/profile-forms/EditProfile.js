@@ -29,9 +29,20 @@ const EditProfile = ({
 			linkedin: loading || !profile.social ? "" : profile.social.linkedin,
 			youtube: loading || !profile.social ? "" : profile.social.youtube,
 			instagram:
-				loading || !profile.socialm ? "" : profile.social.instagram
+				loading || !profile.social ? "" : profile.social.instagram
 		});
-	}, [loading]);
+	}, [
+		getCurrentProfile,
+		loading,
+		profile.company,
+		profile.website,
+		profile.location,
+		profile.status,
+		profile.skills,
+		profile.githubusername,
+		profile.bio,
+		profile.social
+	]);
 
 	const [formData, setFormData] = useState({
 		company: "",

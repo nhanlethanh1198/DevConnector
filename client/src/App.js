@@ -1,7 +1,12 @@
 import React, { useEffect, Fragment } from "react";
 // Redux
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch
+	// useParams
+} from "react-router-dom";
 import { loadUser } from "./actions/auth";
 import "./App.css";
 import Login from "./components/auth/Login";
@@ -13,12 +18,13 @@ import Navbar from "./components/layout/Navbar";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
-import NotFound from "./components/layout/NotFound";
+// import NotFound from "./components/layout/NotFound";
 import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
 import Profiles from "./components/proflies/Profiles";
+import Profile from "./components/profile/Profile";
 
 // Check token
 if (localStorage.token) {
@@ -45,6 +51,12 @@ const App = () => {
 								exact
 								path='/profiles'
 								component={Profiles}
+							/>
+
+							<Route
+								path='/profile/:id'
+								exact
+								render={({ match }) => <Profile />}
 							/>
 
 							<PrivateRoute

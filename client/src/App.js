@@ -18,6 +18,7 @@ import CreateProfile from "./components/profile-forms/CreateProfile";
 import EditProfile from "./components/profile-forms/EditProfile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
+import Profiles from "./components/proflies/Profiles";
 
 // Check token
 if (localStorage.token) {
@@ -35,38 +36,45 @@ const App = () => {
 				<Navbar />
 				<Route exact path='/' component={Landing} />
 				<Switch>
-				<Fragment>
-					<section className='container'>
-						<Alert />
-						<Route path='/register' component={Register} />
-						<Route exact path='/login' component={Login} />
-						<PrivateRoute
-							auth
-							path='/dashboard'
-							component={Dashboard}
-						/>
-						<PrivateRoute
-							auth
-							path='/create-profile'
-							component={CreateProfile}
-						/>
-						<PrivateRoute
-							auth
-							path='/edit-profile'
-							component={EditProfile}
-						/>
-						<PrivateRoute
-							auth
-							path='/add-experience'
-							component={AddExperience}
-						/>
-						<PrivateRoute
-							auth
-							path='/add-education'
-							component={AddEducation}
-						/>
-						{/* <Route component={NotFound} /> */}
-					</section>
+					<Fragment>
+						<section className='container'>
+							<Alert />
+							<Route path='/register' component={Register} />
+							<Route exact path='/login' component={Login} />
+							<Route
+								exact
+								path='/profiles'
+								component={Profiles}
+							/>
+
+							<PrivateRoute
+								auth
+								path='/dashboard'
+								component={Dashboard}
+							/>
+							<PrivateRoute
+								auth
+								path='/create-profile'
+								component={CreateProfile}
+							/>
+							<PrivateRoute
+								auth
+								path='/edit-profile'
+								component={EditProfile}
+							/>
+							<PrivateRoute
+								auth
+								path='/add-experience'
+								component={AddExperience}
+							/>
+							<PrivateRoute
+								auth
+								path='/add-education'
+								component={AddEducation}
+							/>
+
+							{/* <Route component={NotFound} /> */}
+						</section>
 					</Fragment>
 				</Switch>
 			</Router>

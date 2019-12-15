@@ -44,7 +44,11 @@ router.post(
 			if (!user) {
 				return res
 					.status(400)
-					.json({ errors: [{ msg: "Invalid Credentials" }] });
+					.json({
+						errors: [
+							{ msg: "Username or password is not correct!" }
+						]
+					});
 			}
 
 			// Compare password with plaintext
@@ -52,7 +56,11 @@ router.post(
 			if (!isMatch) {
 				return res
 					.status(400)
-					.json({ errors: [{ msg: "Invalid Credentials" }] });
+					.json({
+						errors: [
+							{ msg: "Username or password is not correct!" }
+						]
+					});
 			}
 
 			// Return jsonwebtoken

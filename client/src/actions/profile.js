@@ -84,24 +84,47 @@ export const getProfileById = userId => async dispatch => {
 	}
 };
 
-// Get all profile
-// export const getAllProfiles = () => async dispatch => {
-// 	try {
-// 		const res = await axios.get("/api/profile");
-// 		dispatch({
-// 			type: types.GET_PROFILES,
-// 			payload: res.data
-// 		});
-// 	} catch (err) {
-// 		dispatch({
-// 			type: types.PROFILE_ERROR,
-// 			payload: {
-// 				msg: err.response.statusText,
-// 				status: err.response.status
-// 			}
-// 		});
-// 	}
-// };
+// Get all profiles
+export const getProfiles = () => async dispatch => {
+	dispatch({
+		type: types.CLEAR_PROFILE
+	});
+
+	try {
+		const res = await axios.get("/api/profile");
+		dispatch({
+			type: types.GET_PROFILES,
+			payload: res.data
+		});
+	} catch (err) {
+		dispatch({
+			type: types.PROFILE_ERROR,
+			payload: {
+				msg: err.response.statusText,
+				status: err.response.status
+			}
+		});
+	}
+};
+
+// Get Github repos
+export const getGithubRepos = username => async dispatch => {
+	try {
+		const res = await axios.get(`api/profile/github/${username}`);
+		dispatch({
+			type: types.GET_REPOS,
+			payload: res.data
+		});
+	} catch (err) {
+		dispatch({
+			type: types.PROFILE_ERROR,
+			payload: {
+				msg: err.response.statusText,
+				status: err.response.status
+			}
+		});
+	}
+};
 
 // Add Education
 export const addEducation = (formData, history) => async dispatch => {
@@ -208,7 +231,12 @@ export const deleteAccount = id => async dispatch => {
 			dispatch({ type: types.CLEAR_PROFILE });
 			dispatch({ type: types.ACCOUNT_DELETED });
 
-			dispatch(setAlert("Your account has been permanantly deleted.", "success"));
+			dispatch(
+				setAlert(
+					"Your account has been permanantly deleted.",
+					"success"
+				)
+			);
 		} catch (err) {
 			dispatch({
 				type: types.PROFILE_ERROR,

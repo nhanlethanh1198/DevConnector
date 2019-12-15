@@ -117,6 +117,7 @@ router.get("/", async (req, res) => {
 	try {
 		const profiles = await Profile.find().populate("user", [
 			"user",
+			"name",
 			"avatar"
 		]);
 		res.json(profiles);

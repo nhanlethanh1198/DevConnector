@@ -32,7 +32,6 @@ const AddExperience = ({ addExperience, history }) => {
 	const onSubmit = e => {
 		e.preventDefault();
 		addExperience(formData, history);
-		console.log("Submit Experience");
 	};
 
 	return (

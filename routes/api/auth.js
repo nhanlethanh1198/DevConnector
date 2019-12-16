@@ -42,25 +42,17 @@ router.post(
 			let user = await User.findOne({ email });
 			// See if user not exists
 			if (!user) {
-				return res
-					.status(400)
-					.json({
-						errors: [
-							{ msg: "Username or password is not correct!" }
-						]
-					});
+				return res.status(400).json({
+					errors: [{ msg: "Username or password is not correct!" }]
+				});
 			}
 
 			// Compare password with plaintext
 			const isMatch = await bcrypt.compare(password, user.password);
 			if (!isMatch) {
-				return res
-					.status(400)
-					.json({
-						errors: [
-							{ msg: "Username or password is not correct!" }
-						]
-					});
+				return res.status(400).json({
+					errors: [{ msg: "Username or password is not correct!" }]
+				});
 			}
 
 			// Return jsonwebtoken
@@ -81,7 +73,8 @@ router.post(
 			);
 		} catch (err) {
 			console.error(err.message);
-			res.status(500).send("Server error!");
+			res.status(500).send(`Server error! 
+			${err.message}`);
 		}
 	}
 );

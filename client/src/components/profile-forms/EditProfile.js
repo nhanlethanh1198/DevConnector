@@ -12,7 +12,6 @@ const EditProfile = ({
 }) => {
 	useEffect(() => {
 		getCurrentProfile();
-
 		setFormData({
 			company: loading || !profile.company ? "" : profile.company,
 			website: loading || !profile.website ? "" : profile.website,
@@ -33,15 +32,16 @@ const EditProfile = ({
 		});
 	}, [
 		getCurrentProfile,
-		loading,
-		profile.company,
-		profile.website,
-		profile.location,
-		profile.status,
-		profile.skills,
-		profile.githubusername,
-		profile.bio,
-		profile.social
+		loading
+		// eslint-disable-
+		// profile.company,
+		// profile.website,
+		// profile.location,
+		// profile.status,
+		// profile.skills,
+		// profile.githubusername,
+		// profile.bio,
+		// profile.social
 	]);
 
 	const [formData, setFormData] = useState({

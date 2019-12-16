@@ -332,7 +332,7 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
 // @route   GET api/profile/github/:username
 // @desc 	Get user repos from github
 // @access	Public
-router.get("/github/:username", (req, res) => {
+router.get("/github/:username", async (req, res) => {
 	try {
 		const options = {
 			uri: `https://api.github.com/users/${
@@ -343,7 +343,7 @@ router.get("/github/:username", (req, res) => {
 			method: "GET",
 			headers: { "user-agent": "node.js" }
 		};
-		request(options, (err, response, body) => {
+		await request(options, (err, response, header) => {
 			if (err) console.error(err);
 
 			if (response.statusCode !== 200) {

@@ -19,9 +19,9 @@ const Login = ({ login, isAuthenticated }) => {
 		e.preventDefault();
 	};
 
-	// Redirect 
-	if(isAuthenticated){
-		return <Redirect to='/dashboard'/>
+	// Redirect
+	if (isAuthenticated) {
+		return <Redirect to='/dashboard' />;
 	}
 
 	return (
@@ -33,7 +33,7 @@ const Login = ({ login, isAuthenticated }) => {
 			<form className='form' onSubmit={e => onSubmit(e)}>
 				<div className='form-group'>
 					<input
-						type='email'
+						type='text'
 						placeholder='Email Address'
 						name='email'
 						value={email}
@@ -64,7 +64,7 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
 	login: PropTypes.func.isRequired,
-	isAuthenticated:PropTypes.bool,
+	isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({

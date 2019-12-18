@@ -12,7 +12,6 @@ export default function(state = initialState, action) {
 
 	switch (type) {
 		case types.GET_POSTS:
-		case types.GET_POST:
 			return {
 				...state,
 				posts: payload,
@@ -21,7 +20,7 @@ export default function(state = initialState, action) {
 		case types.POST_ERROR:
 			return {
 				...state,
-				posts: payload,
+				error: payload,
 				loading: false
 			};
 		case types.UPDATE_LIKES:

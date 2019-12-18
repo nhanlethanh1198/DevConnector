@@ -23,12 +23,13 @@ router.get("/", auth, async (req, res) => {
 // @route 	POST api/auth
 // @desc 	Authenticate user & get token
 // @access	Public
-
 router.post(
 	"/",
 	[
 		check("email", "Please type your email").isEmail(),
+		// Check request is email
 		check("password", "Password is required").exists()
+		// Check request is password
 	],
 	async (req, res) => {
 		const errors = validationResult(req);
@@ -80,3 +81,4 @@ router.post(
 );
 
 module.exports = router;
+

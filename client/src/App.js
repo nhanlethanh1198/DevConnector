@@ -25,6 +25,8 @@ import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
 import Profiles from "./components/proflies/Profiles";
 import Profile from "./components/profile/Profile";
+import Posts from "./components/posts/Posts";
+import PostForm from "./components/posts/PostForm";
 
 // Check token
 if (localStorage.token) {
@@ -83,6 +85,17 @@ const App = () => {
 								auth
 								path='/add-education'
 								component={AddEducation}
+							/>
+							<PrivateRoute
+								auth
+								path='/posts'
+								component={Posts}
+							/>
+							<PrivateRoute
+								exact
+								auth
+								path='/posts/:id'
+								component={PostForm}
 							/>
 
 							{/* <Route component={NotFound} /> */}

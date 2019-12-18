@@ -2,16 +2,27 @@ const express = require("express");
 const connectDB = require("./config/db");
 
 const app = express();
-
-// Connect Database
-connectDB();
+app.disable("x-powered-by");
 
 // Init Middleware
 app.use(express.json({ extended: false }));
 
-app.get("/", (req, res) => {
-	res.send("API Running");
-});
+// Connect Database
+try {
+	connectDB();
+	app.get("/", (req, res) => {
+		try {
+			res.send("API Running");
+		} catch (error) {
+			res.json({
+				msg: error.response.statusText,
+				status: error.response.status
+			});
+		}
+	});
+} catch (error) {
+	console.log("Error while fetching from database!");
+}
 
 // Define Routes
 app.use("/api/users", require("./routes/api/users"));

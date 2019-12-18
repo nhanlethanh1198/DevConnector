@@ -33,7 +33,7 @@ Posts.propTypes = {
 	post: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
-	post: state.post
+	posts: state.posts
 });
 
 export default connect(mapStateToProps, { getPosts })(Posts);

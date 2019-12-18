@@ -1,20 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getPost } from "../../actions/post";
+import { addPost } from "../../actions/post";
 import { withRouter } from "react-router-dom";
 
+const PostForm = ({ addPost }) => {
+	const [text, setText] = useState("");
 
-const PostForm = ({ pathMatch, getPost, auth: { user } }) => {
-	useEffect(() => {
-		getPost(pathMatch.params.id);
-	}, [getPost]);
-
-	return <div>Post </div>;
+	return (
+		<div className='post-form'>
+			<div className='bg-primary p'>
+				<h3>Say Something...</h3>
+			</div>
+			<form className='form my-1' onSubmit={e=>{
+				e.preventDefault();
+				addPost({text});
+				setText('')
+			}} >
+				<textarea
+					name='text'
+					cols={30}
+					rows={5}
+					placeholder='Create a post'
+					value={text}
+					onChange={e=> setText(e.target.value)}
+				/>
+				<input
+					type='submit'
+					className='btn btn-dark my-1'
+					defaultValue='Submit'
+				/>
+			</form>
+		</div>
+	);
 };
 
-PostForm.propTypes = {
-	getPost: PropTypes.func.isRequired
-};
+PostForm.propTypes = {};
 
-export default connect(null, { getPost })(withRouter(PostForm));
+export default connect(null, { addPost })(withRouter(PostForm));

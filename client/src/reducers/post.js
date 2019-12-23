@@ -22,7 +22,7 @@ export default function(state = initialState, action) {
 				...state,
 				post: payload,
 				loading: false
-			}
+			};
 		case types.DELETE_POST:
 			return {
 				...state,
@@ -49,6 +49,23 @@ export default function(state = initialState, action) {
 						? { ...post, likes: payload.likes }
 						: post
 				),
+				loading: false
+			};
+		case types.ADD_COMMENT:
+			return {
+				...state,
+				post: { ...state.post, comments: payload },
+				loading: false
+			};
+		case types.REMOVE_COMMENT:
+			return {
+				...state,
+				post: {
+					...state.post,
+					comments: state.post.comments.filter(
+						comment => comment._id !== payload
+					)
+				},
 				loading: false
 			};
 		default:

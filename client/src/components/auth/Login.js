@@ -14,6 +14,7 @@ const Login = ({ login, isAuthenticated }) => {
 
 	const onChange = event =>
 		setFormData({ ...formData, [event.target.name]: event.target.value });
+		
 	const onSubmit = async e => {
 		login(email, password);
 		e.preventDefault();

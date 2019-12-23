@@ -1,9 +1,9 @@
-import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import React, { Fragment } from "react";
 import Moment from "react-moment";
 import { connect } from "react-redux";
-import { addLike, removeLike, deletePost } from "../../actions/post";
+import { Link } from "react-router-dom";
+import { addLike, deletePost, removeLike } from "../../actions/post";
 
 const PostItem = ({
 	addLike,
@@ -16,8 +16,8 @@ const PostItem = ({
 	return (
 		<div className='post bg-white p-1 my-1'>
 			<div>
-				<Link to={"/profiles/${user}"}>
-					<img className='round-img' src={avatar} alt />
+				<Link to={`/profiles/${user}`}>
+					<img className='round-img' src={avatar} alt='' />
 					<h4>{name}</h4>
 				</Link>
 			</div>

@@ -6,7 +6,7 @@ import { loadUser } from "./actions/auth";
 import "./App.css";
 import Landing from "./components/layout/Landing";
 import Navbar from "./components/layout/Navbar";
-import Routes from "./components/routing/Routes";
+import Routes from "./components/routing/routes";
 import store from "./store";
 import setAuthToken from "./utils/setAuthToken";
 

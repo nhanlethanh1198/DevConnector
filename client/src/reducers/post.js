@@ -17,6 +17,12 @@ export default function(state = initialState, action) {
 				posts: payload,
 				loading: false
 			};
+		case types.GET_POST:
+			return {
+				...state,
+				post: payload,
+				loading: false
+			}
 		case types.DELETE_POST:
 			return {
 				...state,

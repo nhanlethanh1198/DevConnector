@@ -1,8 +1,13 @@
 # DevConnector
+
 MernStack
 
-run `npm install`
-and `cd client && npm install`
+Run `npm install` and `cd client && npm install`
 
-return the root folder
-run `npm run dev` to run this project
+Return the root folder then run `npm run dev` to run this project.
+
+# Project deployed to Heroku
+
+You can visit https://fathomless-meadow-22359.herokuapp.com/ to see template.
+
+Thanks for watching.
